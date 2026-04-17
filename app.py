@@ -217,7 +217,7 @@ with gr.Blocks(title="CRC Tissue Classifier") as demo:
         "---\n"
         "**Model:** EfficientNet-B0 · **Framework:** PyTorch + Albumentations · "
         "**Dataset:** NCT-CRC-HE-100K-NONORM (Kather et al., 2019) · "
-        "**Code:** [GitHub](https://github.com/your-username/crc-tissue-classifier)"
+        "**Code:** [GitHub](https://github.com/iitmstudent-2021/colorectal-histology-classifier_computer_vision)"
     )
 
 if __name__ == "__main__":

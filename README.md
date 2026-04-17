@@ -105,8 +105,8 @@ tags:
 ## How to Run Locally
 
 ```bash
-git clone https://github.com/your-username/crc-tissue-classifier
-cd crc-tissue-classifier
+git clone https://github.com/iitmstudent-2021/colorectal-histology-classifier_computer_vision
+cd colorectal-histology-classifier_computer_vision
 pip install -r requirements.txt
 python app.py
 ```
