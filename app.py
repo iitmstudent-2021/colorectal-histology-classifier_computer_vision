@@ -180,7 +180,7 @@ DESCRIPTION = """
 **Validation accuracy: 99.64% · AUC: 1.000 (all classes)**
 """
 
-with gr.Blocks(title="CRC Tissue Classifier") as demo:
+with gr.Blocks(title="CRC Tissue Classifier", theme=gr.themes.Soft()) as demo:
     gr.Markdown(DESCRIPTION)
 
     with gr.Row():
@@ -221,4 +221,4 @@ with gr.Blocks(title="CRC Tissue Classifier") as demo:
     )
 
 if __name__ == "__main__":
-    demo.launch(theme=gr.themes.Soft())
+    demo.launch()
