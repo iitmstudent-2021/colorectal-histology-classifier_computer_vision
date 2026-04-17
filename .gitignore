@@ -1,7 +1,11 @@
 # Raw dataset (too large for GitHub)
 data/
+
+# Exclude .tif globally but allow Sample_Data/
 *.tif
 *.tiff
+!Sample_Data/*.tif
+!Sample_Data/*.tiff
 
 # Python
 __pycache__/

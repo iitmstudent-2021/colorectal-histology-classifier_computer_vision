@@ -24,6 +24,58 @@ tags:
 
 ---
 
+## Live Demo
+
+**Try it instantly — no setup required:**
+
+> **https://huggingface.co/spaces/PANKAJ-MOHAN/colorectal-histology-classifier**
+
+---
+
+## How to Use the App
+
+### Step 1 — Open the Demo
+Visit the live demo link above. The app loads in your browser — no installation needed.
+
+### Step 2 — Upload an H&E Patch
+Click the **"Upload H&E Patch"** image box and upload any colorectal histopathology image (`.tif`, `.png`, `.jpg`).
+
+> **Recommended:** Use the sample images provided in the `Sample_Data/` folder of this repository — one patch per tissue class, ready to test.
+
+### Step 3 — Click "Classify"
+Hit the blue **Classify** button (or the image will auto-classify on upload).
+
+### Step 4 — Read the Results
+The app returns three outputs:
+
+| Output | What It Shows |
+|--------|--------------|
+| **Grad-CAM Heatmap** | Highlighted regions the model focused on — red = high attention |
+| **Prediction Card** | Top predicted class with confidence %, description, and Top-3 predictions |
+| **Class Probabilities Chart** | Horizontal bar chart showing confidence across all 9 classes |
+
+---
+
+## Sample Test Images
+
+The `Sample_Data/` folder contains **9 ready-to-use test patches** — one per tissue class:
+
+| File | Class | Expected Prediction |
+|------|-------|-------------------|
+| `ADI-AAQEFMRI.tif` | Adipose tissue | ADI |
+| `BACK-AAQSHYMA.tif` | Background | BACK |
+| `DEB-ACHGAMCT.tif` | Debris / artifacts | DEB |
+| `LYM-AATTSRNN.tif` | Lymphocytes | LYM |
+| `MUC-AAQTMGMA.tif` | Mucus | MUC |
+| `MUS-AACVWIEK.tif` | Smooth muscle | MUS |
+| `NORM-AAAWMSFI.tif` | Normal colon mucosa | NORM |
+| `STR-AACRYYNQ.tif` | Tumor-associated stroma | STR |
+| `TUM-AACHEHDV.tif` | Adenocarcinoma (tumor) | TUM |
+
+Download any of these and drag-drop into the app to test.
+
+---
+
 ## Model Performance
 
 | Metric | Value |
@@ -38,17 +90,17 @@ tags:
 
 ## Tissue Classes
 
-| Class | Description |
-|-------|-------------|
-| ADI | Adipose (fat) tissue |
-| BACK | Background / non-tissue |
-| DEB | Debris / cellular artifacts |
-| LYM | Lymphocytes (immune cells) |
-| MUC | Mucus |
-| MUS | Smooth muscle |
-| NORM | Normal colon mucosa |
-| STR | Tumor-associated stroma |
-| TUM | Adenocarcinoma epithelium (tumor) |
+| Class | Description | Clinical Significance |
+|-------|-------------|----------------------|
+| ADI | Adipose (fat) tissue | Tumor boundary marker |
+| BACK | Background / non-tissue | Quality control |
+| DEB | Debris / cellular artifacts | Necrosis indicator |
+| LYM | Lymphocytes (immune cells) | Immunotherapy response predictor |
+| MUC | Mucus | Mucinous adenocarcinoma subtype |
+| MUS | Smooth muscle | Muscularis invasion (T-staging) |
+| NORM | Normal colon mucosa | Healthy baseline tissue |
+| STR | Tumor-associated stroma | Linked to poor prognosis |
+| TUM | Adenocarcinoma epithelium | The cancer itself |
 
 ---
 
@@ -74,24 +126,25 @@ tags:
 
 ---
 
-## Features
-
-- Single-image inference with **confidence scores** for all 9 classes
-- **Grad-CAM heatmap** showing which regions drive the prediction
-- **Probability bar chart** for all classes
-- Sample patches included for quick demo
-
----
-
 ## Project Structure
 
 ```
 ├── app.py                  # Gradio demo (HF Spaces entry point)
 ├── requirements.txt
+├── Sample_Data/            # 9 test patches — one per tissue class
+│   ├── ADI-AAQEFMRI.tif
+│   ├── BACK-AAQSHYMA.tif
+│   ├── DEB-ACHGAMCT.tif
+│   ├── LYM-AATTSRNN.tif
+│   ├── MUC-AAQTMGMA.tif
+│   ├── MUS-AACVWIEK.tif
+│   ├── NORM-AAAWMSFI.tif
+│   ├── STR-AACRYYNQ.tif
+│   └── TUM-AACHEHDV.tif
 ├── outputs/
 │   └── best_model.pth      # Trained model checkpoint
-├── assets/
-│   └── samples/            # Example H&E patches for demo
+├── docs/
+│   └── problem_statement.md  # Problem statement & stakeholder analysis
 └── src/
     ├── dataset.py          # Data loading & augmentation
     ├── model.py            # EfficientNet-B0 architecture
@@ -109,6 +162,7 @@ git clone https://github.com/iitmstudent-2021/colorectal-histology-classifier_co
 cd colorectal-histology-classifier_computer_vision
 pip install -r requirements.txt
 python app.py
+# Open http://127.0.0.1:7860 in your browser
 ```
 
 ---
